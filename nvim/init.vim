@@ -39,6 +39,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'Chiel92/vim-autoformat'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'moll/vim-node'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 
 
