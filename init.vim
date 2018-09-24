@@ -37,10 +37,35 @@ Plug 'moll/vim-node'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
 call plug#end()
 
+"Prettier
+"==============
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#semi = 'true'
 
 
+
+"Deoplete
+"========================
+let g:deoplete#enable_at_startup = 1
+
+
+ if exists('$TMUX')
+
+" Colors in tmux
+
+let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
+
+let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
+
+endif
+
+set termguicolors
+
+set background=dark
 
 "The Fix for Slow Scrolling in VIM
 "set lazyredraw
@@ -124,9 +149,12 @@ set nocompatible
 " Use UTF-8 by default
 set encoding=utf-8
 set fileencoding=utf-8
+
+
 " More natural split locations
-set splitbelow
+
 set splitright
+set splitbelow
 set clipboard=unnamed
 " Remove backup files
 set nobackup
@@ -214,6 +242,9 @@ augroup END
 
 
 "NERDTREE
+
+let NERDTreeShowHidden=1
+
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
