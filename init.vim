@@ -10,6 +10,7 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'fatih/vim-go'
+Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -41,6 +42,17 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
+
+"Vim snippets
+"================
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
+map <leader>sp :UltiSnipsEdit<cr>
+
+
+
 "Prettier
 "==============
 let g:prettier#config#single_quote = 'true'
@@ -52,16 +64,6 @@ let g:prettier#config#semi = 'true'
 "========================
 let g:deoplete#enable_at_startup = 1
 
-
- if exists('$TMUX')
-
-" Colors in tmux
-
-let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
-
-let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
-
-endif
 
 set termguicolors
 
@@ -244,7 +246,7 @@ augroup END
 "NERDTREE
 
 let NERDTreeShowHidden=1
-
+nnoremap <C-W> :NERDTreeClose<CR><C-W>
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
