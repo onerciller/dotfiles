@@ -1,5 +1,5 @@
 " PLUGINS
-"====================
+"=========================oner
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
     silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -39,8 +39,15 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ervandew/supertab'
 
 call plug#end()
+
+
+
+"supertab for deoplete
+"=====================
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 
 "Vim snippets
@@ -70,9 +77,9 @@ set termguicolors
 set background=dark
 
 "The Fix for Slow Scrolling in VIM
-"set lazyredraw
-"set synmaxcol=128
-"syntax sync minlines=256
+set lazyredraw
+set synmaxcol=128
+syntax sync minlines=256
 
 "set ttyfast
 "set cul!
@@ -245,8 +252,27 @@ augroup END
 
 "NERDTREE
 
+
+"prevent that fzf open files inside NERDtree
+"
+"let g:fzf_layout = { 'window': 'let g:launching_fzf = 1 | keepalt topleft 100split enew' }
+
+"autocmd FileType nerdtree let t:nerdtree_winnr = bufwinnr('%')
+"autocmd BufWinEnter * call PreventBuffersInNERDTree()
+
+"function! PreventBuffersInNERDTree()
+  "if bufname('#') =~ 'NERD_tree' && bufname('%') !~ 'NERD_tree'
+    "\ && exists('t:nerdtree_winnr') && bufwinnr('%') == t:nerdtree_winnr
+    "\ && &buftype == '' && !exists('g:launching_fzf')
+    "let bufnum = bufnr('%')
+    "close
+    "exe 'b ' . bufnum
+  "endif
+  "if exists('g:launching_fzf') | unlet g:launching_fzf | endif
+"endfunction
+
 let NERDTreeShowHidden=1
-nnoremap <C-W> :NERDTreeClose<CR><C-W>
+
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
